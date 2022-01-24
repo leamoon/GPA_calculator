@@ -6,15 +6,20 @@ Environment : windows10 python3.7 Anaconda3
 Function : exposing major-data visible
 """
 
+import sys
 import pandas as pd
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
 if __name__ == '__main__':
-    data_frame = pd.read_excel('2017级专业分流录取名次对照表-简版.xlsx')
-    rank = data_frame['名次 '].tolist()
-    grade = data_frame['总平均加权成绩 '].tolist()
-    major = data_frame['录取专业'].tolist()
+    try:
+        data_frame = pd.read_excel('2017级专业分流录取名次对照表-简版.xlsx')
+        rank = data_frame['名次 '].tolist()
+        grade = data_frame['总平均加权成绩 '].tolist()
+        major = data_frame['录取专业'].tolist()
+    except Exception:
+        print('data file is not right')
+        sys.exit(-1)
 
     # Dividing four parts
     Optic = []
